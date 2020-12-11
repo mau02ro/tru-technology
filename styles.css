@@ -166,22 +166,3 @@ html {
 #table__content > a:last-child{
   border-bottom: none;
 }
-
-
-@media screen and (max-width: 1165px){
-  .PP__list-image > li > div{
-    max-width: 600px;
-  }
-}
-@media screen and (max-width: 1120px){
-  .PP__list-image > li > div{
-    max-width: 570px;
-  }
-}
-
-@media screen and (max-width: 768px){
-  /*----------------*/
-/* Table Content */
-/*----------------*/
-  
-}
