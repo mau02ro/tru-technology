@@ -104,19 +104,24 @@ html {
 }
 .PP__list-image > li{
   display: flex;
-  justify-content: space-between;
 }
-.PP__list-image > li > img{
+.PP__list-image > li > .PP__wrapper-icon{
+  min-width: 100px;
+  width: 100px;
+  background-color: transparent;
+  display: block
+}
+.PP__list-image > li > .PP__wrapper-icon > img,
+.PP__list-image > li > .PP__wrapper-icon{
   height: max-content;
-}
-.PP__list-image > li > div{
-  width: 100%;
-  max-width: 640px;
 }
 
 /*----------------*/
 /* Table Content */
 /*----------------*/
+#PP_open-menu{
+  display: none;
+}
 #PP__table{
   width: 100%;
   max-width: 270px;
@@ -165,4 +170,87 @@ html {
 }
 #table__content > a:last-child{
   border-bottom: none;
+}
+#PP__table-btn{
+  display: none;
+}
+
+@media screen and (max-width: 768px){
+  #PP{
+    width: 100%;
+  }
+  .PP__main{
+    width: 100%;
+    padding: 0 20px 0 45px;
+  }
+  #PP__table{
+    display: flex;
+    flex-flow: row-reverse;
+    background-color: transparent;
+    border-radius: 0;
+    height: min-content;
+    max-height: initial;
+    max-width: initial;
+    width: auto;
+    top: 0;
+    left: 0;
+    box-shadow: none;
+    padding: 0;
+    z-index: 100;
+    position: absolute;    
+  }
+  .PP__table-wrapper{
+    background-color: #ffffff;
+    box-shadow: 0px 0px 10px #8f8f8f;
+    height: max-content;
+    max-height: 100vh;
+    overflow: auto;
+    width: 100%;
+    max-width: 270px;
+    padding: 14px 25px;
+    height: 100vh;
+    display: none;
+  }
+  #PP__table-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90px;
+    width: 40px;
+    background-color: #062B61;
+    color: #ffffff;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+  .Open ~ .PP__main{
+    margin-left: auto;
+  }
+  .Open {
+    position: fixed !important;
+    animation: nombre .3s;
+  }
+  .Open .PP__table-wrapper{
+    display: block;
+  }
+  .Close{
+    animation: nombre2 .3s;
+  }
+  @keyframes nombre {
+     from {
+      left: -270px;
+    }
+
+    to {
+      left: 0px;
+    }
+  }
+  @keyframes nombre2 {
+     from {
+      left: 0px;
+    }
+
+    to {
+      left: -270px;
+    }
+  }
 }
