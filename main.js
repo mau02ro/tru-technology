@@ -18,11 +18,7 @@ window.addEventListener('load', () => {
   generate_tableOfContent()
 
   PP__table_btn.addEventListener('click', PP__actionTable)
-
-
-  window.addEventListener('scroll', (event) => {
-    PP__fixedTable()
-  })
+  window.addEventListener('scroll', PP__fixedTable)
 })
 
 function PP__validationWidth(value = 768) {
@@ -36,21 +32,22 @@ function PP__validationWidth(value = 768) {
 function generate_tableOfContent() {
   Array.prototype.forEach.call(PP__content_title, (element, key) => {
 
-    let text = element.innerHTML
+    let text = element.innerHTML;
 
     let newItem = document.createElement("a");
     let newContent = document.createTextNode(text);
     newItem.appendChild(newContent);
 
-    let id = `${text.replace(/[=?]/g, "").replace(/[^A-Z0-9]/ig, "-")}-${key}`
+    let id = `${text.replace(/[=?]/g, "").replace(/[^A-Z0-9]/ig, "-")}-${key}`;
 
     element.id = id;
-    newItem.href = `#${id}`
+    newItem.href = `#${id}`;
+    newItem.classList.add("table__content-link");
     table__content.appendChild(newItem);
+
+    newItem.addEventListener("click", PP__navigation_table)
   })
 }
-
-
 
 function PP__fixedTable() {
   if (PP__validationWidth()) {
@@ -75,5 +72,15 @@ function PP__actionTable() {
         PP__table.classList.remove(PP__TABLE_CLOSE)
       }, 300)
     }
+  }
+}
+
+function PP__navigation_table() {
+  if (PP__validationWidth()) {
+    PP__table.classList.add(PP__TABLE_CLOSE)
+    setTimeout(() => {
+      PP__table.classList.remove(PP__TABLE_OPEN)
+      PP__table.classList.remove(PP__TABLE_CLOSE)
+    }, 300)
   }
 }

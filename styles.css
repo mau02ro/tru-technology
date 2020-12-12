@@ -1,5 +1,7 @@
 :root{
   --primary: #062B61;
+  --secondary: #4E545E;
+  --tertiary: #20C198;
 }
 
 body{
@@ -26,7 +28,7 @@ html {
   font-weight: bold;
   font-size: 34px;
   line-height: 46px;
-  color: #062B61;
+  color:var(--primary);
   margin-bottom: 20px;
 }
 #PP p{
@@ -35,7 +37,7 @@ html {
   font-weight: normal;
   font-size: 16px;
   line-height: 22px;
-  color: #4E545E;
+  color: var(--secondary);
   margin-bottom: 20px;
 }
 #PP h3{
@@ -44,11 +46,11 @@ html {
   font-weight: bold;
   font-size: 19px;
   line-height: 26px;
-  color: #062B61;
+  color:var(--primary);
   margin-bottom: 10px;
 }
 #PP h3[class*="secundary"]{
-  color: #4E545E;
+  color: var(--secondary);
 }
 
 #PP li{
@@ -91,7 +93,7 @@ html {
   content: "\2022";
   width: 8px;
   height: 8px;
-  color: #20C198;
+  color: var(--tertiary);
   position: absolute;
   left: -50px;
   font-size: 40px;
@@ -151,7 +153,7 @@ html {
   font-size: 16px;
   line-height: 22px;
   text-transform: uppercase;
-  color: #062B61;
+  color:var(--primary);
   text-align: center;
   margin-bottom: 12px;
 }
@@ -162,7 +164,7 @@ html {
   font-weight: normal;
   font-size: 16px;
   line-height: 22px;
-  color: #4E545E;
+  color: var(--secondary);
   text-decoration: none;
   padding-bottom: 9px;
   border-bottom: 1px solid #EAEFF0;
@@ -176,6 +178,9 @@ html {
 }
 
 @media screen and (max-width: 768px){
+  /*----------------*/
+  /* Main */
+  /*----------------*/
   #PP{
     width: 100%;
   }
@@ -183,6 +188,9 @@ html {
     width: 100%;
     padding: 0 20px 0 45px;
   }
+  /*----------------*/
+  /* Table Content */
+  /*----------------*/
   #PP__table{
     display: flex;
     flex-flow: row-reverse;
@@ -217,7 +225,7 @@ html {
     align-items: center;
     height: 90px;
     width: 40px;
-    background-color: #062B61;
+    background-color:var(--primary);
     color: #ffffff;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
@@ -227,18 +235,18 @@ html {
   }
   .PP__table-open {
     position: fixed !important;
-    animation: nombre .3s;
+    animation: Open_table .3s;
   }
   .PP__table-open .PP__table-wrapper{
     display: block;
   }
   .PP__table-close{
-    animation: nombre2 .3s;
+    animation: Close_table .3s;
   }
   .PP__fixed{
     position: fixed !important;
   }
-  @keyframes nombre {
+  @keyframes Open_table {
      from {
       left: -270px;
     }
@@ -247,7 +255,7 @@ html {
       left: 0px;
     }
   }
-  @keyframes nombre2 {
+  @keyframes Close_table {
      from {
       left: 0px;
     }
@@ -259,8 +267,11 @@ html {
 }
 
 @media screen and (max-width: 425px){
+  /*----------------*/
+  /* Generals */
+  /*----------------*/
   #PP h2{
-    font-size: 23px;
+    font-size: 25px;
     line-height: 28px;
     margin-bottom: 15px;
   }
@@ -273,21 +284,35 @@ html {
     font-size: 18px;
     line-height: 26px;
   }
-
+  /*----------------*/
+  /* Main */
+  /*----------------*/
   .PP__main{
     padding: 0 20px 0 65px;
   }
+  /*----------------*/
+  /* List */
   .PP__list {
     padding-left: 40px;
   }
   .PP__list > li::before {
     left: -30px;
   }
+  /*----------------*/
+  /* List Image */
   .PP__list-image > li {
     display: flex;
     flex-flow: column;
   }
   .PP__wrapper-icon {
     margin: 0 auto;
+  }
+  .PP__wrapper-icon{
+    width: 70px !important;
+    min-width: auto !important;
+    margin-bottom: 10px;
+  }
+  .PP__wrapper-icon > img{
+    height: initial !important;
   }
 }
