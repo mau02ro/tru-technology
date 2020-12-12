@@ -222,18 +222,21 @@ html {
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
   }
-  .Open ~ .PP__main{
+  .PP__table-open ~ .PP__main{
     margin-left: auto;
   }
-  .Open {
+  .PP__table-open {
     position: fixed !important;
     animation: nombre .3s;
   }
-  .Open .PP__table-wrapper{
+  .PP__table-open .PP__table-wrapper{
     display: block;
   }
-  .Close{
+  .PP__table-close{
     animation: nombre2 .3s;
+  }
+  .PP__fixed{
+    position: fixed !important;
   }
   @keyframes nombre {
      from {
@@ -252,5 +255,39 @@ html {
     to {
       left: -270px;
     }
+  }
+}
+
+@media screen and (max-width: 425px){
+  #PP h2{
+    font-size: 23px;
+    line-height: 28px;
+    margin-bottom: 15px;
+  }
+  #PP p{
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 15px;
+  }
+  #PP h3{
+    font-size: 18px;
+    line-height: 26px;
+  }
+
+  .PP__main{
+    padding: 0 20px 0 65px;
+  }
+  .PP__list {
+    padding-left: 40px;
+  }
+  .PP__list > li::before {
+    left: -30px;
+  }
+  .PP__list-image > li {
+    display: flex;
+    flex-flow: column;
+  }
+  .PP__wrapper-icon {
+    margin: 0 auto;
   }
 }

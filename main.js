@@ -4,6 +4,10 @@ var PP;
 var PP__table_btn;
 var PP__table;
 
+const PP__TABLE_OPEN = "PP__table-open";
+const PP__TABLE_CLOSE = "PP__table-close";
+const PP__FIXED = "PP__fixed";
+
 window.addEventListener('load', () => {
   PP = document.getElementById("PP");
   table__content = document.getElementById("table__content");
@@ -21,8 +25,16 @@ window.addEventListener('load', () => {
   })
 })
 
+function PP__validationWidth(value = 768) {
+  if ($(document).width() < value) {
+    return true;
+  } else {
+    return false;
+  };
+}
+
 function generate_tableOfContent() {
-  Array.prototype.forEach.call(PP__content_title, (element) => {
+  Array.prototype.forEach.call(PP__content_title, (element, key) => {
 
     let text = element.innerHTML
 
@@ -30,10 +42,10 @@ function generate_tableOfContent() {
     let newContent = document.createTextNode(text);
     newItem.appendChild(newContent);
 
-    let key = `${text.replace(/[=?]/g, "").replace(/[^A-Z0-9]/ig, "-")}-${Math.floor(Math.random() * 999999)}`
+    let id = `${text.replace(/[=?]/g, "").replace(/[^A-Z0-9]/ig, "-")}-${key}`
 
-    element.id = key;
-    newItem.href = `#${key}`
+    element.id = id;
+    newItem.href = `#${id}`
     table__content.appendChild(newItem);
   })
 }
@@ -41,25 +53,27 @@ function generate_tableOfContent() {
 
 
 function PP__fixedTable() {
-  let { y, bottom } = PP.getBoundingClientRect()
+  if (PP__validationWidth()) {
 
-  if (y <= 0 && bottom >= 70) {
-    PP__table.style.position = "fixed"
-  } else {
-    PP__table.style.position = "absolute"
+    let { y, bottom } = PP.getBoundingClientRect();
+    if (y <= 0 && bottom >= 70) {
+      PP__table.classList.add(PP__FIXED)
+    } else {
+      PP__table.classList.remove(PP__FIXED)
+    }
   }
-
-
 }
 
 function PP__actionTable() {
-  if (!PP__table.classList.contains("Open")) {
-    PP__table.classList.add("Open")
-  } else {
-    PP__table.classList.add("Close")
-    setTimeout(() => {
-      PP__table.classList.remove("Open")
-      PP__table.classList.remove("Close")
-    }, 300)
+  if (PP__validationWidth()) {
+    if (!PP__table.classList.contains(PP__TABLE_OPEN)) {
+      PP__table.classList.add(PP__TABLE_OPEN)
+    } else {
+      PP__table.classList.add(PP__TABLE_CLOSE)
+      setTimeout(() => {
+        PP__table.classList.remove(PP__TABLE_OPEN)
+        PP__table.classList.remove(PP__TABLE_CLOSE)
+      }, 300)
+    }
   }
 }
