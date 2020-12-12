@@ -11,7 +11,7 @@ const PP__FIXED = "PP__fixed";
 window.addEventListener('load', () => {
   PP = document.getElementById("PP");
   table__content = document.getElementById("table__content");
-  PP__content_title = $("#PP h2");
+  PP__content_title = document.getElementsByClassName("PP__content-title");
   PP__table_btn = document.getElementById("PP__table-btn");
   PP__table = document.getElementById("PP__table");
 
