@@ -54,7 +54,6 @@ function PP__fixedTable() {
     if (y <= 0 && bottom >= 70) {
       PP__table.style.left = "0px";
       PP__table.classList.add(PP__FIXED);
-      console.log(PP__table);
     } else {
       PP__table.classList.remove(PP__FIXED);
       PP__table.style.left = "";
