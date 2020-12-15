@@ -22,7 +22,7 @@ window.addEventListener("load", () => {
 });
 
 function PP__validationWidth(value = 768) {
-  if ($(document).width() < value) {
+  if ($(document).width() <= value) {
     return true;
   } else {
     return false;
